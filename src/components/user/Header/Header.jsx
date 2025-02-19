@@ -9,13 +9,28 @@ import {
   AndroidIcon,
   AppleIcon,
 } from "../../../assets";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  // state for language
   const [lang, setLang] = useState("vn");
   const [openLang, setOpenLang] = useState(false);
   const langRef = useRef(null);
+  // state for download app
   const [openDownApp, setOpenDownApp] = useState(false);
   const downloadRef = useRef(null);
+  // state for navbar
+  const [content, setContent] = useState("home");
+  // nav menu
+  const menuItems = [
+    { name: "Trang chủ", path: "/" },
+    { name: "Lịch trình", path: "/lich-trinh" },
+    { name: "Tra cứu vé", path: "/tra-cuu-ve" },
+    { name: "Tin tức", path: "/tin-tuc" },
+    { name: "Hóa đơn", path: "/hoa-don" },
+    { name: "Liên hệ", path: "/lien-he" },
+    { name: "Về chúng tôi", path: "/ve-chung-toi" },
+  ];
 
   // click ra ngoài thì ẩn dropdown
   useEffect(() => {
@@ -37,9 +52,9 @@ const Header = () => {
   };
 
   return (
-    <div className="h-[220px] flex flex-col">
+    <div className="h-[220px] flex flex-col bg-gradient-to-b from-orange-400 to-orange-600 w-full ">
       {/* Login section */}
-      <div className="bg-gradient-to-b from-orange-400 to-orange-600 h-[220px] w-full px-50 pt-4">
+      <div className="px-50 pt-4">
         <div className="flex justify-between items-center">
           {/* lang and download app */}
           <div className="flex space-x-4">
@@ -60,7 +75,7 @@ const Header = () => {
                 <img src={DroplistIcon} alt="" />
               </div>
               {openLang && (
-                <div className="absolute top-1"> 
+                <div className="absolute top-1">
                   <div className="absolute top-[30px] left-0 bg-white w-[100px] space-y-2 rounded-md shadow-md">
                     <button
                       className="flex space-x-2 items-center cursor-pointer p-2 rounded-md hover:bg-slate-200 w-full transition-all"
@@ -83,7 +98,10 @@ const Header = () => {
             <span className="h-[24px] border-l border-white w-0.5"></span>
             {/* Download App */}
             <div className="relative" ref={downloadRef}>
-              <div className="flex space-x-2 items-center cursor-pointer" onClick={() => setOpenDownApp(!openDownApp)}>
+              <div
+                className="flex space-x-2 items-center cursor-pointer"
+                onClick={() => setOpenDownApp(!openDownApp)}
+              >
                 <img src={DownloadApp} className="size-7" alt="flag" />
                 <span className="text-white text-[14px]">Tải ứng dụng</span>
                 <img src={DroplistIcon} alt="" />
@@ -93,14 +111,24 @@ const Header = () => {
                   <div className="absolute top-[30px] left-0 bg-white w-[100px] cursor-pointer space-y-2 rounded-md shadow-md">
                     <button
                       className="flex space-x-2 items-center cursor-pointer p-2 rounded-md hover:bg-slate-200 w-full transition-all"
-                      onClick={() => window.open("https://play.google.com/store/apps/details?id=client.facecar.com", "_blank")}
+                      onClick={() =>
+                        window.open(
+                          "https://play.google.com/store/apps/details?id=client.facecar.com",
+                          "_blank"
+                        )
+                      }
                     >
                       <img src={AndroidIcon} className="size-7" alt="flag" />
                       <span className="text-[14px]">Android</span>
                     </button>
                     <button
                       className="flex space-x-2 items-center cursor-pointer p-2 rounded-md hover:bg-slate-200 w-full transition-all"
-                      onClick={() => window.open("https://apps.apple.com/vn/app/futa/id1126633800", "_blank")}
+                      onClick={() =>
+                        window.open(
+                          "https://apps.apple.com/vn/app/futa/id1126633800",
+                          "_blank"
+                        )
+                      }
                     >
                       <img src={AppleIcon} className="size-7" alt="flag" />
                       <span className="text-[14px]">iOS</span>
@@ -127,14 +155,21 @@ const Header = () => {
       </div>
 
       {/* Navbar */}
-      <div className="flex items-center uppercase text-white">
-        <div className="">Trang chủ</div>
-        <div className="">Lịch trình</div>
-        <div className="">Tra cứu vé</div>
-        <div className="">Tin tức</div>
-        <div className="">Hóa đơn</div>
-        <div className="">Liên hệ</div>
-        <div className="">Về chúng tôi</div>
+      {/* isActive là biến có sẵn nhé +1 kiến thức */}
+      <div className="flex items-center uppercase text-white px-72 pt-12 font-semibold justify-between">
+        {menuItems.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className={({ isActive }) =>
+              `cursor-pointer ${
+                isActive ? "underline underline-offset-8 decoration-white" : ""
+              }`
+            }
+          >
+            {item.name}
+          </NavLink>
+        ))}
       </div>
     </div>
   );
