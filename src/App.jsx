@@ -7,6 +7,7 @@ import NewsPage from "./pages/NewsPage";
 import ReceiptPage from "./pages/ReceiptPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
+import ErrorPage from "./pages/ErrorPage";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="hoa-don" element={<ReceiptPage/>} />
           <Route path="lien-he" element={<ContactPage/>} />
           <Route path="ve-chung-toi" element={<AboutPage/>} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </Router>
