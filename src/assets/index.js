@@ -7,6 +7,15 @@ import DownloadApp from './icons/download_app.svg';
 import User from './icons/user.svg';
 import AndroidIcon from './icons/android.svg';
 import AppleIcon from './icons/apple.svg';
+import FutaAdv from './images/FUTA-Advertising.svg'
+import FutaExpress from './images/Futa-express.svg'
+import Tdcpl from './images/Tdcpl.png'
+import BusLine from './images/BusLines.svg'
+import SaleNoti from './images/logoSaleNoti.png'
+import Chplay from './images/CHPlay.svg'
+import Appstore from './images/AppStore.svg'
+import Facebook from './icons/facebook.svg'
+import Youtube from './icons/youtube.svg'
 
 export {
     DroplistIcon,
@@ -17,5 +26,14 @@ export {
     DownloadApp,
     User,
     AndroidIcon,
-    AppleIcon
+    AppleIcon,
+    FutaAdv,
+    FutaExpress,
+    Tdcpl,
+    BusLine,
+    SaleNoti,
+    Chplay,
+    Appstore,
+    Facebook,
+    Youtube,
 }
