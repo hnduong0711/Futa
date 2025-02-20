@@ -1,4 +1,4 @@
-import plugin from "tailwindcss/plugin";
+// import plugin from "tailwindcss/plugin";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
@@ -37,25 +37,25 @@ export default {
       },
     },
   },
-  plugins: [
-    plugin(function ({ addBase, addComponents }) {
-      addBase({});
-      addComponents({
-        ".button": {
-          "@apply text-[14px] font-bold flex rounded-md items-center justify-center cursor-pointer relative overflow-hidden":
-            {},
-          ".md:button": {
-            "@apply flex": {},
-          },
-        },
-        ".select-data-btn": {
-          "@apply border border-cinestar-purple rounded-md text-[16px] flex  px-2 py-3  bg-white font-bold overflow-hidden text-ellipsis whitespace-nowrap":
-            {},
-        },
-        ".heading": {
-          "@apply text-4xl font-title tracking-wide uppercase": {},
-        },
-      });
-    }),
-  ],
+  // plugins: [
+  //   plugin(function ({ addBase, addComponents }) {
+  //     addBase({});
+  //     addComponents({
+  //       ".button": {
+  //         "@apply text-[14px] font-bold flex rounded-md items-center justify-center cursor-pointer relative overflow-hidden":
+  //           {},
+  //         ".md:button": {
+  //           "@apply flex": {},
+  //         },
+  //       },
+  //       ".select-data-btn": {
+  //         "@apply border border-cinestar-purple rounded-md text-[16px] flex  px-2 py-3  bg-white font-bold overflow-hidden text-ellipsis whitespace-nowrap":
+  //           {},
+  //       },
+  //       ".heading": {
+  //         "@apply text-4xl tracking-wide uppercase": {},
+  //       },
+  //     });
+  //   }),
+  // ],
 };
