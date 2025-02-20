@@ -11,15 +11,13 @@ export default {
       lg: "1024px",
       xl: "1280px",
     },
-    fontFamily: {
-      title: ["Anton", "sans-serif"],
-      content: ["josefin sans", "sans-serif"],
-    },
     extend: {
       colors: {
         "futa-primary": "rgb(239 82 34)",
         "futa-primary-light": "rgb(254 243 240)",
-        "futa-heading-text": "#00613d",
+        "futa-heading": "#00613d",
+        "futa-subheading": "#637280",
+        "futa-primary-hover": "#fc7b4c"
 
       },
       backgroundImage: {
