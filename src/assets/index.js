@@ -16,6 +16,14 @@ import Chplay from './images/CHPlay.svg'
 import Appstore from './images/AppStore.svg'
 import Facebook from './icons/facebook.svg'
 import Youtube from './icons/youtube.svg'
+import Group from './icons/Group.svg'
+import Group2 from './icons/Group-2.svg'
+import Store from './icons/Store.svg'
+import qna1 from './icons/qna1.png'
+import qna2 from './icons/qna2.png'
+import qna3 from './icons/qna3.png'
+import BannerQnA from './images/BannerQnA.png'
+
 
 export {
     DroplistIcon,
@@ -36,4 +44,11 @@ export {
     Appstore,
     Facebook,
     Youtube,
+    Group,
+    Group2,
+    Store,
+    qna1,
+    qna2,
+    qna3,
+    BannerQnA
 }

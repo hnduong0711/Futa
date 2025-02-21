@@ -7,7 +7,9 @@ import NewsPage from "./pages/NewsPage";
 import ReceiptPage from "./pages/ReceiptPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
-import ErrorPage from "./pages/ErrorPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import PolicyPage from "./pages/PolicyPage";
+import QnAPage from "./pages/QnAPage";
 
 
 function App() {
@@ -22,7 +24,9 @@ function App() {
           <Route path="hoa-don" element={<ReceiptPage/>} />
           <Route path="lien-he" element={<ContactPage/>} />
           <Route path="ve-chung-toi" element={<AboutPage/>} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="dieu-khoan-su-dung" element={<PolicyPage/>} />
+          <Route path="hoi-dap" element={<QnAPage/>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Router>
