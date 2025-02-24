@@ -23,6 +23,7 @@ import qna1 from './icons/qna1.png'
 import qna2 from './icons/qna2.png'
 import qna3 from './icons/qna3.png'
 import BannerQnA from './images/BannerQnA.png'
+import LogoText from './images/logoText.svg';
 
 
 export {
@@ -50,5 +51,6 @@ export {
     qna1,
     qna2,
     qna3,
-    BannerQnA
+    BannerQnA,
+    LogoText
 }

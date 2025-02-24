@@ -10,6 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PolicyPage from "./pages/PolicyPage";
 import QnAPage from "./pages/QnAPage";
+import LoginPage from "./pages/LoginPage";
 
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
           <Route path="ve-chung-toi" element={<AboutPage/>} />
           <Route path="dieu-khoan-su-dung" element={<PolicyPage/>} />
           <Route path="hoi-dap" element={<QnAPage/>} />
+          <Route path="dang-nhap" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
+
         </Route>
       </Routes>
     </Router>
