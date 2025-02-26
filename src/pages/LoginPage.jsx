@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { TvcLogin, LogoText } from "../assets";
 import { Mail, RectangleEllipsis, Eye, EyeOff } from "lucide-react";
-import { div } from "framer-motion/client";
 
 const LoginPage = () => {
   const [isHaveAccount, setIsHaveAccount] = useState(true);
@@ -9,7 +8,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex items-center justify-center px-50 py-10">
-      <div className="border border-futa-primary shadow-2xl p-4 rounded-2xl w-full">
+      <div className="border border-futa-primary shadow-2xl px-4 py-20 rounded-2xl w-full">
         <div className="grid grid-cols-2 gap-4">
           <div className="w-full flex flex-col relative">
             <img src={LogoText} className="w-[70%] absolute" alt="tvc" />
