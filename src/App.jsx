@@ -11,6 +11,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import PolicyPage from "./pages/PolicyPage";
 import QnAPage from "./pages/QnAPage";
 import LoginPage from "./pages/LoginPage";
+import GuideRechargePage from "./pages/GuideRechargePage";
+import GuideBuyPage from "./pages/GuideBuyPage";
 
 
 function App() {
@@ -28,7 +30,10 @@ function App() {
           <Route path="dieu-khoan-su-dung" element={<PolicyPage/>} />
           <Route path="hoi-dap" element={<QnAPage/>} />
           <Route path="dang-nhap" element={<LoginPage />} />
+          <Route path="huong-dan-dat-ve-tren-web" element={<GuideBuyPage />} />
+          <Route path="huong-dan-nap-tien-tren-app" element={<GuideRechargePage />} />
           <Route path="*" element={<NotFoundPage />} />
+
 
         </Route>
       </Routes>
