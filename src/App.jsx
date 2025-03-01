@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserLayout from "./layouts/UserLayout";
+import AdminLayout from "./layouts/AdminLayout";
 import HomePage from "./pages/Homepage";
 import SchedulePage from "./pages/SchedulePage";
 import SearchTicketPage from "./pages/SearchTicketPage";
@@ -13,6 +14,7 @@ import QnAPage from "./pages/QnAPage";
 import LoginPage from "./pages/LoginPage";
 import GuideRechargePage from "./pages/GuideRechargePage";
 import GuideBuyPage from "./pages/GuideBuyPage";
+import BranchPage from "./pages/BranchPage";
 
 
 function App() {
@@ -32,9 +34,14 @@ function App() {
           <Route path="dang-nhap" element={<LoginPage />} />
           <Route path="huong-dan-dat-ve-tren-web" element={<GuideBuyPage />} />
           <Route path="huong-dan-nap-tien-tren-app" element={<GuideRechargePage />} />
+          <Route path="chi-nhanh" element={<BranchPage />} />
           <Route path="*" element={<NotFoundPage />} />
 
 
+        </Route>
+
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Router>

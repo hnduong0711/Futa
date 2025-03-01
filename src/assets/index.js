@@ -43,6 +43,9 @@ import GBTInterest from './icons/gbtinterest.svg';
 import GBTStepProgress from './icons/gbtstep_progress.svg';
 import GBTTime from './icons/gbttime.svg';
 import GBTUlity from './icons/gbtulity.svg';
+import SwitchLocation from './icons/switch_location.svg';
+import ScheduleDoubleArrow from './icons/schedule_double_arrow.svg';
+import Banner from './images/banner.png';
 
 
 
@@ -91,5 +94,8 @@ export {
     GBTInterest,
     GBTStepProgress,
     GBTTime,
-    GBTUlity
+    GBTUlity,
+    SwitchLocation,
+    ScheduleDoubleArrow,
+    Banner
 }
