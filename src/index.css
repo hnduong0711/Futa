@@ -5,3 +5,68 @@
 body {
   font-family: 'Inter Tight';
 }
+
+@layer utilities {
+  .custom-scrollbar {
+    /* Độ rộng thanh cuộn (Firefox) */
+    scrollbar-width: thin;
+    /* Màu thumb và track (Firefox) */
+    scrollbar-color: #d7d7d7 #f3f4f6;
+    /* thumb: gray-500, track: nhạt gray-100 */
+  }
+
+  /* Tùy chỉnh cho trình duyệt Webkit (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    /* Độ rộng thanh cuộn */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    /* Màu khung nhạt (gray-100) */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cdcdcd;
+    /* Màu thumb (gray-500) */
+    border-radius: 10px;
+    /* Bo tròn tối đa (rounded-full) */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+    /* Đậm hơn khi hover (gray-600) */
+  }
+}
+
+@layer utilities {
+  .scrollbar-outside {
+    overflow-y: scroll;
+    padding-right: 8px;
+    /* Bù chiều rộng thanh cuộn - khớp với width của scrollbar */
+    box-sizing: content-box;
+    /* Đảm bảo padding không ảnh hưởng nội dung */
+  }
+
+  .scrollbar-outside::-webkit-scrollbar {
+    width: 8px;
+    /* Độ rộng thanh cuộn */
+  }
+
+  .scrollbar-outside::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    /* Màu nhạt cho track */
+  }
+
+  .scrollbar-outside::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    /* Màu thumb */
+    border-radius: 9999px;
+    /* Bo tròn */
+  }
+
+  .scrollbar-outside::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+    /* Đậm hơn khi hover */
+  }
+}

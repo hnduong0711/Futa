@@ -8,8 +8,9 @@ import {
   User,
   AndroidIcon,
   AppleIcon,
+  Banner,
 } from "../../../assets";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
   // state for language
@@ -31,6 +32,8 @@ const Header = () => {
     { name: "Liên hệ", path: "/lien-he" },
     { name: "Về chúng tôi", path: "/ve-chung-toi" },
   ];
+  // location
+  const location = useLocation();
 
   // click ra ngoài thì ẩn dropdown
   useEffect(() => {
@@ -52,7 +55,11 @@ const Header = () => {
   };
 
   return (
-    <div className="h-[220px] flex flex-col bg-gradient-to-b from-orange-400 to-orange-600 w-full ">
+    <div
+      className={`${
+        location.pathname === "/" ? "h-[220px]" : "h-[150px]"
+      } flex flex-col bg-gradient-to-b from-orange-400 to-orange-600 w-full relative`}
+    >
       {/* Login section */}
       <div className="px-50 pt-4">
         <div className="flex justify-between items-center">
@@ -172,6 +179,13 @@ const Header = () => {
           </NavLink>
         ))}
       </div>
+
+      {/* Banner sẽ ở đây */}
+      {location.pathname === "/" && (
+        <div className="shadow-2xl rounded-2xl absolute left-1/2 translate-x-[-50%] w-[70%] top-[150px]">
+          <img src={Banner} className="rounded-2xl" alt="" />
+        </div>
+      )}
     </div>
   );
 };

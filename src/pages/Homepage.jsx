@@ -1,9 +1,12 @@
 import React from 'react'
+import BookingBox from '../components/user/BookingBox/BookingBox'
 
 const Homepage = () => {
   return (
-    <div className='bg-amber-50-500 w-full h-[500px] flex mt-auto'>
-      <div className='flex flex-col'>HAHA</div>
+    <div className='px-50 py-10 relative'>
+      <div className='flex flex-col pt-40'>
+        <BookingBox />
+      </div>
     </div>
   )
 }
