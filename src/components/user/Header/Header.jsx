@@ -182,8 +182,8 @@ const Header = () => {
 
       {/* Banner sẽ ở đây */}
       {location.pathname === "/" && (
-        <div className="shadow-2xl rounded-2xl absolute left-1/2 translate-x-[-50%] w-[70%] top-[150px]">
-          <img src={Banner} className="rounded-2xl" alt="" />
+        <div className="px-50 rounded-2xl absolute left-1/2 translate-x-[-50%] w-full top-[150px]">
+          <img src={Banner} className="rounded-2xl shadow-xl" alt="" />
         </div>
       )}
     </div>
