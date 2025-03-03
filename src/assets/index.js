@@ -46,6 +46,18 @@ import GBTUlity from './icons/gbtulity.svg';
 import SwitchLocation from './icons/switch_location.svg';
 import ScheduleDoubleArrow from './icons/schedule_double_arrow.svg';
 import Banner from './images/banner.png';
+import Pro1 from './images/Promotion/pro1.jpg';
+import Pro2 from './images/Promotion/pro2.png';
+import Pro3 from './images/Promotion/pro3.jpg';
+import Pro4 from './images/Promotion/pro4.png';
+import Pro5 from './images/Promotion/pro5.png';
+import Pro6 from './images/Promotion/pro6.png';
+import Pro7 from './images/Promotion/pro7.png';
+import Pro8 from './images/Promotion/pro8.png';
+import Fr1 from './images/FavouriteRoute/fr1.png';
+import Fr2 from './images/FavouriteRoute/fr2.png';
+import Fr3 from './images/FavouriteRoute/fr3.png';
+
 
 
 
@@ -97,5 +109,16 @@ export {
     GBTUlity,
     SwitchLocation,
     ScheduleDoubleArrow,
-    Banner
+    Banner,
+    Pro1,
+    Pro2,
+    Pro3,
+    Pro4,
+    Pro5,
+    Pro6,
+    Pro7,
+    Pro8,
+    Fr1,
+    Fr2,
+    Fr3
 }
