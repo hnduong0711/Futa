@@ -33,7 +33,7 @@ const SlideContainer = ({ children }) => {
   };
 
   return (
-    <div style={{ width: "80%", margin: "0 auto" }}>
+    <div style={{ width: "100%", margin: "0 auto" }} className="space-x-4">
       <Slider {...settings}>
         {/* Các slide */}
         {children}
