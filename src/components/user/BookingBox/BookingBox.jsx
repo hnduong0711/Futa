@@ -44,7 +44,7 @@ const BookingBox = () => {
   return (
     <div className="bg-futa-primary-hover/10 rounded-2xl p-2">
       {/* content booking box */}
-      <div className="bg-white border border-futa-primary-hover rounded-2xl p-4 flex flex-col w-full space-y-2">
+      <div className="relative bg-white border border-futa-primary-hover rounded-2xl p-4 flex flex-col w-full space-y-2">
         {/* option type trip  */}
         <div className="flex justify-between w-full space-y-4">
           <div className="flex items-center space-x-6">
@@ -110,7 +110,7 @@ const BookingBox = () => {
         </div>
 
         {/* button booking */}
-        <div className="bg-futa-primary rounded-2xl p-2 text-white text-center w-[20%] cursor-pointer mx-auto absolute left-1/2 translate-x-[-50%] bottom-[7%] hover:bg-futa-primary-hover transition-all duration-300">
+        <div className="bg-futa-primary rounded-2xl p-2 text-white text-center w-[20%] cursor-pointer mx-auto absolute left-1/2 translate-x-[-50%]  top-[87%] hover:bg-futa-primary-hover transition-all duration-300">
           Tìm chuyến
         </div>
       </div>
