@@ -57,6 +57,8 @@ import Pro8 from './images/Promotion/pro8.png';
 import Fr1 from './images/FavouriteRoute/fr1.png';
 import Fr2 from './images/FavouriteRoute/fr2.png';
 import Fr3 from './images/FavouriteRoute/fr3.png';
+import CMS from './images/cms.svg';
+import CMS1 from './images/cms1.svg';
 
 
 
@@ -120,5 +122,7 @@ export {
     Pro8,
     Fr1,
     Fr2,
-    Fr3
+    Fr3,
+    CMS,
+    CMS1
 }
