@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SwitchLocation } from "../assets";
 import { Search } from "lucide-react";
-import ScheduleList from "../components/user/ScheduleList/ScheduleList";
+import ScheduleList from "../components/user/ScheduleComponent/ScheduleList/ScheduleList";
 import LocationPicker from "../components/shared/LocationPicker/LocationPicker";
 
 const SchedulePage = () => {

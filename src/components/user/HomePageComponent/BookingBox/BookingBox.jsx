@@ -1,8 +1,8 @@
 import { Search } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { SwitchLocation } from "../../../assets";
-import LocationPicker from "../../shared/LocationPicker/LocationPicker";
+import { SwitchLocation } from "../../../../assets";
+import LocationPicker from "../../../shared/LocationPicker/LocationPicker";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { ScheduleDoubleArrow } from "../../../assets";
+import { ScheduleDoubleArrow } from "../../../../assets";
 
 const ScheduleList = ({Start}) => {
   return (
