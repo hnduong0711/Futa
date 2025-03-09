@@ -7,6 +7,7 @@ import NewsSlider from "../components/user/HomePageComponent/CustomSlider/NewsSl
 import { CMS1 } from "../assets";
 
 const Homepage = () => {
+
   return (
     <div className="px-50 py-10 relative">
       <div className="flex flex-col pt-44 space-y-12">

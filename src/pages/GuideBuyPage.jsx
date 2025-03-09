@@ -6,13 +6,81 @@ import {
   GBTChair,
   GBTComfortable,
   GBTcomment,
+  GBTCoStep3,
   GBTInterest,
+  GBTStep1,
+  GBTStep2_1,
+  GBTStep2_2,
+  GBTStep3,
+  GBTStep4,
+  GBTStep5,
   GBTStepProgress,
   GBTTime,
   GBTUlity,
 } from "../assets";
 
 const GuideBuyPage = () => {
+  const FlowSection = () => {
+    return (
+      <div className="grid grid-cols-9 gap-4">
+        {/* Step 1 */}
+        <div className="flex flex-col relative">
+          <img src={GBTBoundStepActive} alt="" />
+          <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
+            01
+          </span>
+          <span className="text-lg">Truy cập vào địa chỉ futabus.vn</span>
+        </div>
+        <div className="flex flex-col justify-center">
+          <img src={GBTStepProgress} alt="" className="" />
+        </div>
+        {/* Step 2 */}
+        <div className="flex flex-col relative">
+          <img src={GBTBoundStepActive} alt="" />
+          <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
+            02
+          </span>
+          <span className="text-lg">Chọn thông tin hành trình</span>
+        </div>
+        <div className="flex flex-col justify-center">
+          <img src={GBTStepProgress} alt="" className="" />
+        </div>
+        {/* Step 3 */}
+        <div className="flex flex-col relative">
+          <img src={GBTBoundStepActive} alt="" />
+          <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
+            03
+          </span>
+          <span className="text-lg">
+            Chọn ghế, điểm đón trả, thông tin hành khách
+          </span>
+        </div>
+        <div className="flex flex-col justify-center">
+          <img src={GBTStepProgress} alt="" className="" />
+        </div>
+        {/* Step 4 */}
+        <div className="flex flex-col relative">
+          <img src={GBTBoundStepActive} alt="" />
+          <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
+            04
+          </span>
+          <span className="text-lg">Chọn phương thức thanh toán</span>
+        </div>
+        <div className="flex flex-col justify-center">
+          <img src={GBTStepProgress} alt="" className="" />
+        </div>
+        {/* Step 5 */}
+        <div className="flex flex-col relative">
+          <img src={GBTBoundStepActive} alt="" />
+          <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
+            05
+          </span>
+          <span className="text-lg">Mua vé xe thành công</span>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="px-50 py-10">
       <div className="flex flex-col items-center space-y-8 py-5">
@@ -81,13 +149,14 @@ const GuideBuyPage = () => {
             giúp Khách hàng tiết kiệm thời gian quý báu.
           </span>
         </div>
+        {/* Step 1 */}
         <div className="flex flex-col items-center">
           <span className="text-futa-heading text-3xl font-semibold text-center pb-6">
             Bước 1: Những trải nghiệm nổi bật mà Ứng Dụng Mua Vé{" "}
             <span className="text-futa-primary">FUTA Bus</span> và Website{" "}
             <span className="text-futa-primary">futabus.vn</span> mang lại
           </span>
-          <div className="grid grid-cols-3 gap-4 px-4">
+          <div className="grid grid-cols-3 gap-4">
             <div className="flex flex-col items-center space-y-6 shadow-[0_0_14px_rgba(0,0,0,0.1)] rounded-2xl p-6">
               <img src={GBTTime} alt="icon" />
               <span className="px-5 text-center">
@@ -129,86 +198,216 @@ const GuideBuyPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center bg-futa-primary-hover/5 space-y-4">
+        {/* Step 2 */}
+        <div className="p-4 flex flex-col items-center bg-futa-primary/5 rounded-2xl w-full space-y-8 font-semibold">
           <span className="text-futa-heading text-3xl font-semibold text-center pb-6">
             Bước 2: Những bước để giúp khách hàng trải nghiệm mua vé nhanh
           </span>
-          <div className="flex justify-center items-center relative">
-            <div className="basis-1/5 flex">
-              <div className="flex flex-col relative items-center space-y-4">
-                <img
-                  src={GBTBoundStepActive}
-                  className="w-[80px] lg:w-[118px]"
-                  alt=""
-                />
-                <span className="absolute font-bold text-2xl top-1/6 text-futa-primary">
+          {/* Step 2.1 */}
+          <div className="flex flex-col w-full font-semibold items-center space-y-6">
+            {/* Flow section */}
+            <div className="grid grid-cols-9 gap-4">
+              {/* Step 1 */}
+              <div className="flex flex-col relative">
+                <img src={GBTBoundStepActive} alt="" />
+                <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
                   01
                 </span>
-                <span className="w-3/4">Truy cập vào địa chỉ futabus.vn</span>
+                <span className="text-lg">Truy cập vào địa chỉ futabus.vn</span>
               </div>
-              <img src={GBTStepProgress} className="" alt="" />
-            </div>
-            <div className="basis-1/5 flex">
-              <div className="flex flex-col relative items-center space-y-4">
-                <img
-                  src={GBTBoundStepActive}
-                  className="w-[80px] lg:w-[118px]"
-                  alt=""
-                />
-                <span className="absolute font-bold text-2xl top-1/6 text-futa-primary">
+              <div className="flex flex-col justify-center">
+                <img src={GBTStepProgress} alt="" className="" />
+              </div>
+              {/* Step 2 */}
+              <div className="flex flex-col relative">
+                <img src={GBTBoundStepActive} alt="" />
+                <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
                   02
                 </span>
-                <span className="w-3/4">Chọn thông tin hành trình</span>
+                <span className="text-lg">Chọn thông tin hành trình</span>
               </div>
-              <img src={GBTStepProgress} className="" alt="" />
-            </div>
-
-            <div className="basis-1/5 flex">
-              <div className="flex flex-col relative items-center space-y-4">
-                <img
-                  src={GBTBoundStepActive}
-                  className="w-[80px] lg:w-[118px]"
-                  alt=""
-                />
-                <span className="absolute font-bold text-2xl top-1/6 text-futa-primary">
+              <div className="flex flex-col justify-center">
+                <img src={GBTStepProgress} alt="" className="" />
+              </div>
+              {/* Step 3 */}
+              <div className="flex flex-col relative">
+                <img src={GBTBoundStepActive} alt="" />
+                <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
                   03
                 </span>
-                <span className="w-3/4">
+                <span className="text-lg">
                   Chọn ghế, điểm đón trả, thông tin hành khách
                 </span>
               </div>
-              <img src={GBTStepProgress} className="" alt="" />
-            </div>
-
-            <div className="basis-1/5 flex">
-              <div className="flex flex-col relative items-center space-y-4">
-                <img
-                  src={GBTBoundStepActive}
-                  className="w-[80px] lg:w-[118px]"
-                  alt=""
-                />
-                <span className="absolute font-bold text-2xl top-1/6 text-futa-primary">
+              <div className="flex flex-col justify-center">
+                <img src={GBTStepProgress} alt="" className="" />
+              </div>
+              {/* Step 4 */}
+              <div className="flex flex-col relative">
+                <img src={GBTBoundStepActive} alt="" />
+                <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
                   04
                 </span>
-                <span className="w-3/4">Chọn phương thức thanh toán</span>
+                <span className="text-lg">Chọn phương thức thanh toán</span>
               </div>
-              <img src={GBTStepProgress} className="" alt="" />
-            </div>
-
-            <div className="basis-1/5 flex">
-              <div className="flex flex-col relative items-center space-y-4">
-                <img
-                  src={GBTBoundStepActive}
-                  className="w-[80px] lg:w-[118px]"
-                  alt=""
-                />
-                <span className="absolute font-bold text-2xl top-1/6 text-futa-primary">
+              <div className="flex flex-col justify-center">
+                <img src={GBTStepProgress} alt="" className="" />
+              </div>
+              {/* Step 5 */}
+              <div className="flex flex-col relative">
+                <img src={GBTBoundStepActive} alt="" />
+                <span className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-250%] font-semibold text-2xl">
                   05
                 </span>
-                <span className="w-3/4">Mua vé xe thành công</span>
+                <span className="text-lg">Mua vé xe thành công</span>
+              </div>
+            </div>
+            <span className="text-3xl text-center">
+              Bước 1: Truy cập địa chỉfutabus.vn
+            </span>
+            <img src={GBTStep1} alt="step2.1" className="w-3/4" />
+            <span className="text-2xl text-center w-3/4">
+              Tải ứng dụng tại futabus.vn hoặc tìm ứng dụng Futa Bus trên Futa
+              Bus trên Google Play hoặc Apple store
+            </span>
+            <div className="flex flex-col items-center space-y-2">
+              <div className="flex space-x-2">
+                <img
+                  src={Chplay}
+                  alt="chplay"
+                  className="cursor-pointer"
+                  onClick={() =>
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=client.facecar.com",
+                      "_blank"
+                    )
+                  }
+                />
+                <img
+                  src={Appstore}
+                  alt="chplay"
+                  className="cursor-pointer"
+                  onClick={() =>
+                    window.open(
+                      "https://apps.apple.com/vn/app/futa/id1126633800",
+                      "_blank"
+                    )
+                  }
+                />
               </div>
             </div>
           </div>
+
+          {/* Step 2.2.1 */}
+          <div className="flex flex-col items-center">
+            {/* Flow section */}
+            {FlowSection()}
+            <span className="text-3xl text-center pb-6">
+              Bước 2: Chọn thông tin hành trình
+            </span>
+            <img src={GBTStep2_1} alt="step2.1" />
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 pt-6 w-full">
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  1
+                </span>
+                <span className="text-xl font-semibold">
+                  Chọn điểm khởi hành
+                </span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  2
+                </span>
+                <span className="text-xl font-semibold">Chọn điểm đến</span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  3
+                </span>
+                <span className="text-xl font-semibold">Chọn ngày đi</span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  4
+                </span>
+                <span className="text-xl font-semibold">Chọn ngày về</span>
+              </div>
+            </div>
+          </div>
+          {/* Step 2.2.2 */}
+          <div className="flex flex-col items-center">
+            <img src={GBTStep2_2} alt="step2.1" />
+            <div className="grid grid-cols-2 grid-rows-3 gap-4 pt-6 w-full">
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  1
+                </span>
+                <span className="text-xl font-semibold">
+                  Chọn điểm khởi hành
+                </span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  2
+                </span>
+                <span className="text-xl font-semibold">Chọn điểm đến</span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  3
+                </span>
+                <span className="text-xl font-semibold">Chọn ngày đi</span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  4
+                </span>
+                <span className="text-xl font-semibold">Chọn ngày về</span>
+              </div>
+              <div className="flex space-x-2 items-center">
+                <span className="border-2 border-dashed border-futa-primary rounded-full size-14 font-semibold flex justify-center items-center text-4xl text-futa-primary">
+                  5
+                </span>
+                <span className="text-xl font-semibold">Chọn nhanh số ghế</span>
+              </div>
+            </div>
+          </div>
+          {/* Step 2.3 */}
+          <div className="flex flex-col items-center">
+            {/* Flow section */}
+            {FlowSection()}
+            <span className="text-3xl text-center">
+              Bước 3: Chọn ghế, điểm đón trả, thông tin hành khách
+            </span>
+            <img src={GBTStep3} alt="step2.3" className="" />
+          </div>
+          {/* Step 2.4 */}
+          <div className="flex flex-col items-center">
+            {/* Flow section */}
+            {FlowSection()}
+            <span className="text-3xl text-center">
+              Bước 4: Chọn phương thức thanh toán
+            </span>
+            <img src={GBTStep4} alt="step2.4" className="" />
+          </div>
+          {/* Step 2.5 */}
+          <div className="flex flex-col items-center">
+            {/* Flow section */}
+            {FlowSection()}
+            <span className="text-3xl text-center">
+              Bước 5: Mua vé thành công
+            </span>
+            <img src={GBTStep5} alt="step2.5" className="" />
+          </div>
+        </div>
+        {/* Step 3 */}
+        <div className="flex flex-col items-center">
+          <span className="text-futa-heading text-3xl font-semibold text-center pb-6">
+            Bước 3: Vé xe sẽ được gửi về Email. Quý khách vui lòng kiểm tra
+            Email để nhận vé
+          </span>
+          <img src={GBTCoStep3} alt="step3" className="w-3/4" />
         </div>
       </div>
     </div>
