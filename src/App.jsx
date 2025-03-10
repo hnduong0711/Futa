@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage";
 import GuideRechargePage from "./pages/GuideRechargePage";
 import GuideBuyPage from "./pages/GuideBuyPage";
 import BranchPage from "./pages/BranchPage";
+import FoundedRoutePage from "./pages/FoundedRoutePage";
 
 
 function App() {
@@ -35,6 +36,8 @@ function App() {
           <Route path="huong-dan-dat-ve-tren-web" element={<GuideBuyPage />} />
           <Route path="huong-dan-nap-tien-tren-app" element={<GuideRechargePage />} />
           <Route path="chi-nhanh" element={<BranchPage />} />
+          <Route path="dat-ve" element={<FoundedRoutePage />} />
+
           <Route path="*" element={<NotFoundPage />} />
 
 
