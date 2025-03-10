@@ -57,7 +57,7 @@ const Header = () => {
   return (
     <div
       className={`${
-        location.pathname === "/" ? "h-[220px]" : "h-[150px]"
+        (location.pathname === "/" || location.pathname === "/dat-ve") ? "h-[220px]" : "h-[150px]"
       } flex flex-col bg-gradient-to-b from-orange-400 to-orange-600 w-full relative`}
     >
       {/* Login section */}
@@ -181,8 +181,8 @@ const Header = () => {
       </div>
 
       {/* Banner sẽ ở đây */}
-      {location.pathname === "/" && (
-        <div className="px-50 rounded-2xl absolute left-1/2 translate-x-[-50%] w-full top-[150px]">
+      {(location.pathname === "/" || location.pathname === "/dat-ve") && (
+        <div className="px-50 rounded-2xl absolute left-1/2 translate-x-[-50%] w-full top-[160px]">
           <img src={Banner} className="rounded-2xl shadow-xl" alt="" />
         </div>
       )}

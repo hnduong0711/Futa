@@ -59,6 +59,8 @@ import Fr2 from './images/FavouriteRoute/fr2.png';
 import Fr3 from './images/FavouriteRoute/fr3.png';
 import CMS from './images/cms.svg';
 import CMS1 from './images/cms1.svg';
+import StationStart from './icons/station-start.svg';
+import StationEnd from './icons/station-end.svg';
 
 
 
@@ -124,5 +126,7 @@ export {
     Fr2,
     Fr3,
     CMS,
-    CMS1
+    CMS1,
+    StationStart,
+    StationEnd
 }

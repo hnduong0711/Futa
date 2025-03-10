@@ -110,9 +110,9 @@ const BookingBox = () => {
         </div>
 
         {/* button booking */}
-        <div className="bg-futa-primary rounded-2xl p-2 text-white text-center w-[20%] cursor-pointer mx-auto absolute left-1/2 translate-x-[-50%]  top-[87%] hover:bg-futa-primary-hover transition-all duration-300">
+        <NavLink to="dat-ve" className="bg-futa-primary rounded-2xl p-2 text-white text-center w-[20%] cursor-pointer mx-auto absolute left-1/2 translate-x-[-50%]  top-[87%] hover:bg-futa-primary-hover transition-all duration-300">
           Tìm chuyến
-        </div>
+        </NavLink>
       </div>
     </div>
   );
