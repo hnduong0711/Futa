@@ -16,37 +16,46 @@ import GuideRechargePage from "./pages/GuideRechargePage";
 import GuideBuyPage from "./pages/GuideBuyPage";
 import BranchPage from "./pages/BranchPage";
 import FoundedRoutePage from "./pages/FoundedRoutePage";
-
+import BookingDetail from "./components/user/BookingDetail/BookingDetail";
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<UserLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="lich-trinh" element={<SchedulePage />} />
-          <Route path="tra-cuu-ve" element={<SearchTicketPage/>} />
-          <Route path="tin-tuc" element={<NewsPage/>} />
-          <Route path="hoa-don" element={<ReceiptPage/>} />
-          <Route path="lien-he" element={<ContactPage/>} />
-          <Route path="ve-chung-toi" element={<AboutPage/>} />
-          <Route path="dieu-khoan-su-dung" element={<PolicyPage/>} />
-          <Route path="hoi-dap" element={<QnAPage/>} />
-          <Route path="dang-nhap" element={<LoginPage />} />
-          <Route path="huong-dan-dat-ve-tren-web" element={<GuideBuyPage />} />
-          <Route path="huong-dan-nap-tien-tren-app" element={<GuideRechargePage />} />
-          <Route path="chi-nhanh" element={<BranchPage />} />
-          <Route path="dat-ve" element={<FoundedRoutePage />} />
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<UserLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="lich-trinh" element={<SchedulePage />} />
+            <Route path="tra-cuu-ve" element={<SearchTicketPage />} />
+            <Route path="tin-tuc" element={<NewsPage />} />
+            <Route path="hoa-don" element={<ReceiptPage />} />
+            <Route path="lien-he" element={<ContactPage />} />
+            <Route path="ve-chung-toi" element={<AboutPage />} />
+            <Route path="dieu-khoan-su-dung" element={<PolicyPage />} />
+            <Route path="hoi-dap" element={<QnAPage />} />
+            <Route path="dang-nhap" element={<LoginPage />} />
+            <Route
+              path="huong-dan-dat-ve-tren-web"
+              element={<GuideBuyPage />}
+            />
+            <Route
+              path="huong-dan-nap-tien-tren-app"
+              element={<GuideRechargePage />}
+            />
+            <Route path="chi-nhanh" element={<BranchPage />} />
+            <Route path="dat-ve" element={<FoundedRoutePage />} />
+            <Route path="chi-tiet-dat-ve" element={<BookingDetail />} />
 
-          <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
 
-
-        </Route>
-
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Provider>
     </Router>
   );
 }

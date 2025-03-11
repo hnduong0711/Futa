@@ -5,6 +5,7 @@ import { StationEnd, StationStart } from "../assets";
 import SeatLayout from "../components/user/Subcontent/SeatLayout/SeatLayout";
 import Policy from "../components/user/Subcontent/Policy/Policy";
 import Transshipment from "../components/user/Subcontent/Transshipment/Transshipment";
+import { NavLink } from "react-router-dom";
 
 const FoundedRoutePage = () => {
   const [subcontent, setSubcontent] = useState("");
@@ -99,9 +100,9 @@ const FoundedRoutePage = () => {
                       Chính sách
                     </span>
                   </div>
-                  <button className="bg-futa-primary text-white rounded-2xl py-2 cursor-pointer basis-1/4">
+                  <NavLink to="/chi-tiet-dat-ve" className="bg-futa-primary text-center text-white rounded-2xl py-2 cursor-pointer basis-1/4">
                     Đặt chỗ
-                  </button>
+                  </NavLink>
                 </div>
                 {/* Subcontent */}
                 <div className="py-4 ">
