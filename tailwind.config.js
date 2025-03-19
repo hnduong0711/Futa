@@ -27,13 +27,18 @@ export default {
         "custom-10px": "10px", // Khai báo border radius tùy chỉnh
       },
       keyframes: {
-        scaleUpDown: {
-          "0%, 100%": { transform: "scale(1)" }, // Kích thước ban đầu
-          "50%": { transform: "scale(1.2)" }, // Phóng to ở giữa
+        bgSlideIn: {
+          'from': { transform: 'translateY(-100%)' },
+          'to': { transform: 'translateY(0)' },
+        },
+        bgSlideUp: {
+          'from': { transform: 'translateY(100%)' },
+          'to': { transform: 'translateY(0)' },
         },
       },
       animation: {
-        scaleLoop: "scaleUpDown 1s ease-in-out infinite", // Hiệu ứng lặp vô hạn
+        'bg-slide-in': 'bgSlideIn 0.3s ease-in-out forwards',
+        'bg-slide-up': 'bgSlideUp 0.3s ease-in-out forwards',
       },
     },
   },

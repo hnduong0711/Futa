@@ -61,6 +61,11 @@ import CMS from './images/cms.svg';
 import CMS1 from './images/cms1.svg';
 import StationStart from './icons/station-start.svg';
 import StationEnd from './icons/station-end.svg';
+import Bill from './icons/admin/bill.svg';
+import Gbttime from './icons/admin/gbttime.svg';
+import NewsPaper from './icons/admin/newspaper.svg';
+import Trip from './icons/admin/trip.svg';
+import Schedule from './icons/admin/schedule.svg';
 
 
 
@@ -128,5 +133,10 @@ export {
     CMS,
     CMS1,
     StationStart,
-    StationEnd
+    StationEnd,
+    Bill,
+    Gbttime,
+    NewsPaper,
+    Trip,
+    Schedule
 }
