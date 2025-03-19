@@ -19,6 +19,11 @@ import FoundedRoutePage from "./pages/FoundedRoutePage";
 import BookingDetail from "./components/user/BookingDetail/BookingDetail";
 import { Provider } from "react-redux";
 import store from "./store/index";
+import AdminDashboard from "./components/admin/Content/AdminDashboard/AdminDashboard";
+import Receipt from "./components/admin/Content/Receipt/Receipt";
+import Schedule from "./components/admin/Content/Schedule/Schedule";
+import News from "./components/admin/Content/News/News";
+import Trip from "./components/admin/Content/Trip/Trip";
 
 function App() {
   return (
@@ -52,6 +57,11 @@ function App() {
           </Route>
 
           <Route path="/admin" element={<AdminLayout />}>
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="hoa-don" element={<Receipt />} />
+            <Route path="lich-trinh" element={<Schedule />} />
+            <Route path="tin-tuc" element={<News />} />
+            <Route path="chuyen-xe" element={<Trip />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

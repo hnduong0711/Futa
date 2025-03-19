@@ -163,7 +163,7 @@ const Header = () => {
       </div>
 
       {/* Navbar */}
-      {/* isActive là biến có sẵn nhé +1 kiến thức */}
+      {/* isActive là biến có sẵn trong navlink nhé +1 kiến thức */}
       <div className="flex items-center uppercase text-white px-72 pt-12 font-semibold justify-between">
         {menuItems.map((item) => (
           <NavLink
