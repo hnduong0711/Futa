@@ -37,6 +37,11 @@ const Sidebar = () => {
     },
   ];
 
+  const handleLogout = () => {
+    localStorage.setItem("isAdminLoggedIn", "false");
+    window.location.reload(); 
+  }
+
   return (
     <div className="w-1/3 p-4 bg-futa-primary border flex flex-col justify-between border-slate-300 shadow-[0_0_4px_4px_rgba(0,0,0,0.1)]">
       <div className="flex flex-col space-y-2">
@@ -61,7 +66,7 @@ const Sidebar = () => {
          <UserCircle size={24} />
          <span>Admin</span>
         </div>
-        <button className="bg-white font-semibold text-futa-primary  p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out">
+        <button onClick={handleLogout} className="bg-white font-semibold text-futa-primary  p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out">
           Đăng xuất
         </button>
       </div>

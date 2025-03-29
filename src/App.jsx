@@ -24,6 +24,8 @@ import Receipt from "./components/admin/Content/Receipt/Receipt";
 import Schedule from "./components/admin/Content/Schedule/Schedule";
 import News from "./components/admin/Content/News/News";
 import Trip from "./components/admin/Content/Trip/Trip";
+import AdminLogin from "./components/admin/Login/AdminLogin";
+import ProtectedAdmin from "./components/admin/ProtectAdmin/ProtectAdmin";
 
 function App() {
   return (
@@ -56,13 +58,16 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
 
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="hoa-don" element={<Receipt />} />
-            <Route path="lich-trinh" element={<Schedule />} />
-            <Route path="tin-tuc" element={<News />} />
-            <Route path="chuyen-xe" element={<Trip />} />
-            <Route path="*" element={<NotFoundPage />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route element={<ProtectedAdmin />}>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="hoa-don" element={<Receipt />} />
+              <Route path="lich-trinh" element={<Schedule />} />
+              <Route path="tin-tuc" element={<News />} />
+              <Route path="chuyen-xe" element={<Trip />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
           </Route>
         </Routes>
       </Provider>
