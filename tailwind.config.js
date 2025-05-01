@@ -26,6 +26,11 @@ export default {
       borderRadius: {
         "custom-10px": "10px", // Khai báo border radius tùy chỉnh
       },
+      backgroundImage: {
+        "disable-seat": "url('assets/icons/seats/seat_disabled.svg')",
+        "active-seat": "url('assets/icons/seats/seat_active.svg')",
+        "selecting-seat": "url('assets/icons/seats/seat_selecting.svg')",
+      },
       keyframes: {
         bgSlideIn: {
           'from': { transform: 'translateY(-100%)' },

@@ -66,6 +66,9 @@ import Gbttime from './icons/admin/gbttime.svg';
 import NewsPaper from './icons/admin/newspaper.svg';
 import Trip from './icons/admin/trip.svg';
 import Schedule from './icons/admin/schedule.svg';
+import DisableSeat from './icons/seats/seat_disabled.svg';
+import ActiveSeat from './icons/seats/seat_active.svg';
+import SelectingSeat from './icons/seats/seat_selecting.svg';
 
 
 
@@ -138,5 +141,8 @@ export {
     Gbttime,
     NewsPaper,
     Trip,
-    Schedule
+    Schedule,
+    SelectingSeat,
+    DisableSeat,
+    ActiveSeat
 }

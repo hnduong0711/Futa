@@ -144,7 +144,7 @@ const GenericDataTable = ({
             ))}
           </div>
         </div>
-        <div className="w-full h-full">
+        <div className="w-full h-[450px]">
           <DataGrid
             rows={filteredRows}
             columns={columns}

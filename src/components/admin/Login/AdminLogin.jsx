@@ -11,7 +11,7 @@ const AdminLogin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "123123") {
+    if (username === "" && password === "") {
       localStorage.setItem("isAdminLoggedIn", "true");
       navigate("/admin/dashboard");
     } else {

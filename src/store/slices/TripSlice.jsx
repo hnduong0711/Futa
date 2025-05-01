@@ -24,6 +24,9 @@ const tripSlice = createSlice({
     },
     resetTrip: () => initialState,
   },
+  extraReducers: (builder) => {
+    builder.addCase("trip/")
+  }
 });
 
 export const { setTripType, selectDepartureTrip, selectReturnTrip, resetTrip } =
