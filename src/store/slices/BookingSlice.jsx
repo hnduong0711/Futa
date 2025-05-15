@@ -1,12 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-// Hàm đặt vé
+// Async thunk để đặt vé
 export const bookTicket = createAsyncThunk(
-  "Booking/bookTicket",
+  'booking/bookTicket',
   async (bookingData, { getState }) => {
-    const user = getState();
-    const response = await axios.post("/api/bookings", {
+    const { user } = getState();
+    if (!user.isAuthenticated) {
+      throw new Error('User not authenticated');
+    }
+    const response = await axios.post('/api/bookings', {
       ...bookingData,
       userId: user.userId,
       token: user.token,
@@ -15,66 +18,68 @@ export const bookTicket = createAsyncThunk(
   }
 );
 
-const BookingSlice = createSlice({
-  name: "Booking",
+const bookingSlice = createSlice({
+  name: 'booking',
   initialState: {
     form: {
-      origin: "",
-      destination: "",
-      departureDate: null,
-      returnDate: null,
-      seatNumbers: [],
-      seatCount: 0,
-      pickupPoint: "",
-      dropoffPoint: "",
-      totalPrice: 0,
-      isRoundTrip: false,
-      scheduleId: null,
+      origin: '', 
+      destination: '', 
+      departureDate: null, 
+      returnDate: null, 
+      isRoundTrip: false, 
     },
-    bookingDetails: null,
-    loading: false,
-    error: null,
-    status: null,
+    bookingDetails: {
+      
+      seatNumbers: [], 
+      seatCount: 0, 
+      pickupPoint: '', 
+      totalPrice: 0, 
+      scheduleId: null, 
+      bookingId: null, 
+      status: null, 
+    },
+    loading: false, 
+    error: null, 
+    status: null, 
   },
   reducers: {
     updateForm(state, action) {
-      const payload = action.payload;
-      if (payload.isRoundTrip !== undefined && payload.isRoundTrip !== null) {
-        state.form.isRoundTrip = !!payload.isRoundTrip; // Chuyển thành boolean
-      }
-      state.form = { ...state.form, ...payload };
+      state.form = { ...state.form, ...action.payload };
+    },
+    updateBookingDetails(state, action) {
+      state.bookingDetails = { ...state.bookingDetails, ...action.payload };
     },
     toggleRoundTrip(state) {
-      console.log("Before toggle:", state.form.isRoundTrip);
       state.form.isRoundTrip = !state.form.isRoundTrip;
-      console.log("After toggle:", state.form.isRoundTrip);
       if (!state.form.isRoundTrip) {
         state.form.returnDate = null;
       }
     },
     resetForm(state) {
       state.form = {
-        origin: "",
-        destination: "",
+        origin: '',
+        destination: '',
         departureDate: null,
         returnDate: null,
+        isRoundTrip: false,
+      };
+      state.bookingDetails = {
         seatNumbers: [],
         seatCount: 0,
-        pickupPoint: "",
-        dropoffPoint: "",
+        pickupPoint: '',
         totalPrice: 0,
-        isRoundTrip: false,
         scheduleId: null,
+        bookingId: null,
+        status: null,
       };
-      state.bookingDetails = null;
       state.loading = false;
       state.error = null;
       state.status = null;
     },
     selectSchedule(state, action) {
       const schedule = action.payload;
-      state.form.scheduleId = schedule.id;
-      state.form.totalPrice = schedule.price * state.form.seatCount;
+      state.bookingDetails.scheduleId = schedule.id;
+      state.bookingDetails.totalPrice = schedule.price * state.bookingDetails.seatCount;
     },
   },
   extraReducers: (builder) => {
@@ -82,20 +87,24 @@ const BookingSlice = createSlice({
       .addCase(bookTicket.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.status = null;
       })
       .addCase(bookTicket.fulfilled, (state, action) => {
         state.loading = false;
-        state.bookingDetails = action.payload;
-        state.status = "success";
+        state.bookingDetails = {
+          ...state.bookingDetails,
+          ...action.payload, // Cập nhật từ API (bookingId, status, v.v.)
+        };
+        state.status = 'success';
       })
       .addCase(bookTicket.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-        state.status = "failed";
+        state.status = 'failed';
       });
   },
 });
 
-export default BookingSlice.reducer;
-export const { toggleRoundTrip, resetForm, selectSchedule, updateForm } =
-  BookingSlice.actions;
+export const { updateForm, updateBookingDetails, toggleRoundTrip, resetForm, selectSchedule } =
+  bookingSlice.actions;
+export default bookingSlice.reducer;

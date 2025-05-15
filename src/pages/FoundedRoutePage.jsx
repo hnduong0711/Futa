@@ -6,9 +6,13 @@ import SeatLayout from "../components/user/Subcontent/SeatLayout/SeatLayout";
 import Policy from "../components/user/Subcontent/Policy/Policy";
 import Transshipment from "../components/user/Subcontent/Transshipment/Transshipment";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const FoundedRoutePage = () => {
   const [subcontent, setSubcontent] = useState("");
+  const {form, loading: bookingLoading, error: bookingError} = useSelector((state) => state.booking);
+  const {isRoundTrip} = form;
+  
 
   const handleSubcontent = (content) => {
     
@@ -37,6 +41,14 @@ const FoundedRoutePage = () => {
           </div>
           {/* List */}
           <div className="bg-white w-2/3 p-4 rounded-2xl shadow-[0_0_14px_rgba(0,0,0,0.1)]">
+          {
+            isRoundTrip && (
+              <div className="flex justify-between items-center mb-4">
+                <div className={`flex justify-center uppercase font-semibold text-xl w-full text-futa-primary border-b-2 border-futa-primary mx-4`}>Chiều đi</div>
+                <div className={`flex justify-center uppercase font-semibold text-xl w-full text-futa-primary border-b-2 border-futa-primary mx-4`}>Chiều về</div>
+              </div>
+            )
+          }
             <div className="bg-white rounded-2xl shadow-[1_1_15px_rgba(0,0,0,0.2)] w-full flex flex-col space-y-4 p-2">
               <div className="flex">
                 <div className="basis-3/4 flex flex-col space-y-2">

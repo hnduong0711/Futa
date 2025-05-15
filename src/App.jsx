@@ -26,6 +26,9 @@ import News from "./components/admin/Content/News/News";
 import Trip from "./components/admin/Content/Trip/Trip";
 import AdminLogin from "./components/admin/Login/AdminLogin";
 import ProtectedAdmin from "./components/admin/ProtectAdmin/ProtectAdmin";
+import PickupArea from "./components/admin/Content/PickupArea/PickupArea";
+import TripInfo from "./components/admin/Content/TripInfo/TripInfo";
+import Transportation from "./components/admin/Content/Transportation/Transportation";
 
 function App() {
   return (
@@ -64,8 +67,9 @@ function App() {
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="hoa-don" element={<Receipt />} />
               <Route path="lich-trinh" element={<Schedule />} />
-              <Route path="tin-tuc" element={<News />} />
-              <Route path="chuyen-xe" element={<Trip />} />
+              <Route path="khoi-hanh" element={<PickupArea />} />
+              <Route path="chuyen-xe" element={<Transportation />} />
+              <Route path="tuyen-duong" element={<TripInfo />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Route>

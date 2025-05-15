@@ -36,7 +36,7 @@ const BookingBox = () => {
     dispatch(searchSchedules({ origin, destination, departureDate, returnDate, isRoundTrip })).then(
       (result) => {
         if (result.meta.requestStatus === 'fulfilled') {
-          navigate('/search-results');
+          navigate('/dat-ve');
         }
       }
     );

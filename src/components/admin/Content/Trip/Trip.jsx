@@ -1,5 +1,5 @@
 import React from "react";
-import GenericDataTable from "../../GenericDataTable/GenericDataTable"
+// import GenericDataTable from "../../GenericDataTable/GenericDataTable"
 
 const Trip = () => {
   const initialRows = [
@@ -13,6 +13,9 @@ const Trip = () => {
     { id: 8, start: "TP.Hồ Chí Minh", end: "Nha Trang" },
     { id: 9, start: "Hà Nội", end: "Đà Nẵng" },
   ];
+
+  // api lấy lịch trình chuyến xe
+
 
   const columns = [
     {
@@ -54,15 +57,16 @@ const Trip = () => {
   };
 
   return (
-    <GenericDataTable
-      title="Quản lý chuyến xe"
-      columns={columns}
-      initialRows={initialRows}
-      onAdd={handleAdd}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-      searchFields={["start", "end"]} // Chỉ tìm kiếm trên các trường "start" và "end"
-    />
+    <div></div>
+    // <GenericDataTable
+    //   title="Quản lý chuyến xe"
+    //   columns={columns}
+    //   initialRows={initialRows}
+    //   onAdd={handleAdd}
+    //   onEdit={handleEdit}
+    //   onDelete={handleDelete}
+    //   searchFields={["start", "end"]} // Chỉ tìm kiếm trên các trường "start" và "end"
+    // />
   );
 };
 

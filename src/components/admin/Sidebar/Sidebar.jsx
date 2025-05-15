@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Bill, Gbttime, NewsPaper, Schedule, Trip } from "../../../assets";
-import { User, UserCircle } from "lucide-react";
+import { Bus, User, UserCircle } from "lucide-react";
 
 const Sidebar = () => {
   const NavList = [
@@ -25,15 +25,21 @@ const Sidebar = () => {
     },
     {
       id: 4,
-      name: "Tin tức",
-      icon: <img src={NewsPaper} alt="dashboard" className="size-7" />,
-      path: "/admin/tin-tuc",
+      name: "Trạm xe",
+      icon: <img src="https://cdn-icons.flaticon.com/svg/2207/2207497.svg?token=exp=1747295750~hmac=2d5deee939fa5e886b2db741a6bec13c" alt="dashboard" className="size-7" />,
+      path: "/admin/khoi-hanh",
     },
     {
       id: 5,
       name: "Hóa đơn",
       icon: <img src={Bill} alt="dashboard" className="size-7" />,
       path: "/admin/hoa-don",
+    },
+    {
+      id: 6,
+      name: "Tuyến đường",
+      icon: <img src={Schedule} alt="dashboard" className="size-7" />,
+      path: "/admin/tuyen-duong",
     },
   ];
 

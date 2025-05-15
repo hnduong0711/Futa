@@ -2,29 +2,29 @@ import React from "react";
 import { Grid, Box, Typography } from "@mui/material";
 import Seat from "./Seat";
 
-const SeatLayout = ({ seatsCount = 36, bookedSeats = [], selectedSeats = [] }) => {
+const SeatLayout = ({ seatsCount = 36, bookedSeats = [], selectedSeats = [], onSeatClick }) => {
+  // Determine seats per tier (18 for 36 seats, 17 for 34 seats)
   const seatsPerTier = seatsCount === 36 ? 18 : 17;
 
-  const changeStateSeat = () => {
-    console.log("Đang thay đổi trạng thái ghế");
-    
-  }
-
+  // Generate seat numbers for lower (A) and upper (B) tiers
   const generateSeatNumbers = (tier, count) => {
     const seats = [];
-    for (let i = 1; i <= 18; i++) {
+    for (let i = 1; i <= count; i++) {
       seats.push(`${tier}${i.toString().padStart(2, "0")}`);
     }
-    return seats.slice(0, count);
+    return seats;
   };
 
+  // Seat numbers for each tier
   const lowerTierSeats = generateSeatNumbers("A", seatsPerTier);
   const upperTierSeats = generateSeatNumbers("B", seatsPerTier);
 
-  const isVirtualSeat = (rowIndex, colIndex) => {
-    return seatsCount === 34 && rowIndex === 0 && colIndex === 1; // Row 0, column 1
+  // Check if a seat is virtual (non-existent, e.g., A00 for 34 seats)
+  const isVirtualSeat = (seatNumber) => {
+    return seatsCount === 34 && seatNumber === "A01";
   };
 
+  // Render a single tier of seats
   const renderTier = (tierSeats, tierLabel) => (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold", color: "#f97316" }}>
@@ -43,8 +43,8 @@ const SeatLayout = ({ seatsCount = 36, bookedSeats = [], selectedSeats = [] }) =
                 <Seat
                   isBooked={bookedSeats.includes(seatNumber)}
                   isSelected={selectedSeats.includes(seatNumber)}
-                  isVirtual={isVirtualSeat(rowIndex, colIndex)}
-                  onClick={() => changeStateSeat()}
+                  isVirtual={isVirtualSeat(seatNumber)}
+                  onClick={() => onSeatClick(seatNumber)}
                   seatNumber={seatNumber}
                 />
               </Grid>
