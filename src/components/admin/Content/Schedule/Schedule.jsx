@@ -16,8 +16,18 @@ const Schedule = () => {
   const [selectedVehicleId, setSelectedVehicleId] = useState('');
   const [selectedTripInfoId, setSelectedTripInfoId] = useState('');
   const [selectedPickupAreaId, setSelectedPickupAreaId] = useState('');
+  const [vehicleText, setVehicleText] = useState(''); // Text hiển thị cho input xe
+  const [tripInfoText, setTripInfoText] = useState(''); // Text hiển thị cho input tuyến đường
+  const [pickupAreaText, setPickupAreaText] = useState(''); // Text hiển thị cho input trạm đón
+  const [showVehicleList, setShowVehicleList] = useState(false); // Hiển thị droplist xe
+  const [showTripInfoList, setShowTripInfoList] = useState(false); // Hiển thị droplist tuyến đường
+  const [showPickupAreaList, setShowPickupAreaList] = useState(false); // Hiển thị droplist trạm đón
+  const [vehicleSearch, setVehicleSearch] = useState(''); // Tìm kiếm xe
+  const [tripInfoSearch, setTripInfoSearch] = useState(''); // Tìm kiếm tuyến đường
+  const [pickupAreaSearch, setPickupAreaSearch] = useState(''); // Tìm kiếm trạm đón
   const [departureTime, setDepartureTime] = useState('');
   const [travelHours, setTravelHours] = useState('');
+  const [seatPrice, setSeatPrice] = useState('');
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [deleteTripId, setDeleteTripId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +41,6 @@ const Schedule = () => {
     },
   };
 
-  // Hàm format thời gian giữ múi giờ +07:00
   const formatDateTime = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -74,14 +83,14 @@ const Schedule = () => {
   };
 
   const handleAddSchedule = async () => {
-    if (!selectedVehicleId || !selectedTripInfoId || !selectedPickupAreaId || !departureTime || !travelHours) {
+    if (!selectedVehicleId || !selectedTripInfoId || !selectedPickupAreaId || !departureTime || !travelHours || !seatPrice) {
       alert('Vui lòng điền đầy đủ thông tin');
       return;
     }
 
     const departureDate = new Date(departureTime);
     const arrivalDate = new Date(departureDate.getTime() + travelHours * 60 * 60 * 1000);
-    const createdAt = formatDateTime(new Date()); // Format createdAt
+    const createdAt = formatDateTime(new Date());
 
     try {
       await axios.post(
@@ -89,10 +98,11 @@ const Schedule = () => {
         {
           tripInfoId: selectedTripInfoId,
           transportationId: selectedVehicleId,
-          departureTime: formatDateTime(departureDate), // Giữ múi giờ +07:00
-          arrivalTime: formatDateTime(arrivalDate),     // Giữ múi giờ +07:00
+          departureTime: formatDateTime(departureDate),
+          arrivalTime: formatDateTime(arrivalDate),
           pickupAreaId: selectedPickupAreaId,
           availableSeats: 36,
+          seatPrice: parseInt(seatPrice, 10),
           status: 'SELLING',
           createdAt: createdAt,
         },
@@ -110,7 +120,7 @@ const Schedule = () => {
   };
 
   const handleEditSchedule = async () => {
-    if (!selectedVehicleId || !selectedTripInfoId || !selectedPickupAreaId || !departureTime || !travelHours) {
+    if (!selectedVehicleId || !selectedTripInfoId || !selectedPickupAreaId || !departureTime || !travelHours || !seatPrice) {
       alert('Vui lòng điền đầy đủ thông tin');
       return;
     }
@@ -125,10 +135,11 @@ const Schedule = () => {
         {
           tripInfoId: selectedTripInfoId,
           transportationId: selectedVehicleId,
-          departureTime: formatDateTime(departureDate), // Giữ múi giờ +07:00
-          arrivalTime: formatDateTime(arrivalDate),     // Giữ múi giờ +07:00
+          departureTime: formatDateTime(departureDate),
+          arrivalTime: formatDateTime(arrivalDate),
           pickupAreaId: selectedPickupAreaId,
           availableSeats: 36,
+          seatPrice: parseInt(seatPrice, 10),
           status: 'SELLING',
           createdAt: createdAt,
         },
@@ -163,8 +174,18 @@ const Schedule = () => {
     setSelectedVehicleId('');
     setSelectedTripInfoId('');
     setSelectedPickupAreaId('');
+    setVehicleText('');
+    setTripInfoText('');
+    setPickupAreaText('');
+    setVehicleSearch('');
+    setTripInfoSearch('');
+    setPickupAreaSearch('');
+    setShowVehicleList(false);
+    setShowTripInfoList(false);
+    setShowPickupAreaList(false);
     setDepartureTime('');
     setTravelHours('');
+    setSeatPrice('');
     setSelectedCityId('');
     setIsEditMode(false);
     setEditTripId(null);
@@ -191,13 +212,17 @@ const Schedule = () => {
       setIsEditMode(true);
       setEditTripId(tripId);
       setSelectedVehicleId(schedule.transportation.id || '');
+      setVehicleText(schedule.transportation.name || '');
       setSelectedTripInfoId(schedule.tripInfo.id || '');
+      setTripInfoText(`${schedule.tripInfo.departureCity.name} - ${schedule.tripInfo.arrivalCity.name}`);
       setSelectedPickupAreaId(schedule.pickupArea.id || '');
+      setPickupAreaText(`${schedule.pickupArea.city.name} - ${schedule.pickupArea.number}`);
       setDepartureTime(schedule.departureTime ? schedule.departureTime.slice(0, 16) : '');
       const departure = new Date(schedule.departureTime);
       const arrival = new Date(schedule.arrivalTime);
       const hours = isNaN(arrival - departure) ? '' : (arrival - departure) / (1000 * 60 * 60);
       setTravelHours(hours ? hours.toString() : '');
+      setSeatPrice(schedule.seatPrice ? schedule.seatPrice.toString() : '');
       setSelectedCityId(schedule.tripInfo.departureCity?.id || '');
       setOpenModal(true);
       fetchData();
@@ -217,7 +242,8 @@ const Schedule = () => {
       (schedule.departureTime || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (schedule.arrivalTime || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (schedule.pickupArea?.number || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (schedule.createdAt || '').toLowerCase().includes(searchTerm.toLowerCase())
+      (schedule.createdAt || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (schedule.seatPrice || '').toString().toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalPages = Math.ceil(filteredSchedules.length / itemsPerPage);
@@ -226,9 +252,23 @@ const Schedule = () => {
     currentPage * itemsPerPage
   );
 
-  const filteredPickupAreas = pickupAreas.filter(
-    (area) => area.city.id === selectedCityId
+  const filteredVehicles = vehicles.filter((vehicle) =>
+    vehicle.name.toLowerCase().includes(vehicleSearch.toLowerCase())
   );
+
+  const filteredTripInfos = tripInfos.filter((trip) =>
+    `${trip.departureCity.name} - ${trip.arrivalCity.name}`
+      .toLowerCase()
+      .includes(tripInfoSearch.toLowerCase())
+  );
+
+  const filteredPickupAreas = pickupAreas
+    .filter((area) => area.city.id === selectedCityId)
+    .filter((area) =>
+      `${area.city.name} - ${area.number}`
+        .toLowerCase()
+        .includes(pickupAreaSearch.toLowerCase())
+    );
 
   return (
     <div className="p-6 w-full h-screen overflow-auto">
@@ -258,13 +298,14 @@ const Schedule = () => {
         <table className="w-full">
           <thead className="bg-gray-100">
             <tr>
-              <th className="w-1/8 p-3 text-left">ID</th>
+              <th className="w-1/12 p-3 text-left">ID</th>
               <th className="w-1/8 p-3 text-left">Tên xe</th>
               <th className="w-1/8 p-3 text-left">Tuyến đường</th>
               <th className="w-1/8 p-3 text-left">Thời gian khởi hành</th>
               <th className="w-1/8 p-3 text-left">Thời gian đến</th>
               <th className="w-1/8 p-3 text-left">Trạm đón</th>
               <th className="w-1/8 p-3 text-left">Ngày tạo</th>
+              <th className="w-1/8 p-3 text-left">Giá vé</th>
               <th className="w-1/8 p-3 text-left">Hành động</th>
             </tr>
           </thead>
@@ -280,6 +321,7 @@ const Schedule = () => {
                 <td className="p-3">{schedule.arrivalTime ? new Date(schedule.arrivalTime).toLocaleString('vi-VN') : 'N/A'}</td>
                 <td className="p-3">{schedule.pickupArea?.number || 'N/A'}</td>
                 <td className="p-3">{schedule.createdAt ? new Date(schedule.createdAt).toLocaleString('vi-VN') : 'N/A'}</td>
+                <td className="p-3">{schedule.seatPrice ? `${schedule.seatPrice.toLocaleString('vi-VN')}đ` : 'N/A'}</td>
                 <td className="p-3">
                   <button
                     onClick={() => loadScheduleForEdit(schedule.id)}
@@ -317,62 +359,110 @@ const Schedule = () => {
             <h2 className="text-xl font-semibold mb-6">
               {isEditMode ? 'Sửa lịch trình' : 'Thêm lịch trình mới'}
             </h2>
-            <div className="mb-6">
+            <div className="mb-6 relative">
               <label className="block text-sm font-medium text-gray-700 mb-1">Chọn xe</label>
-              <select
-                value={selectedVehicleId}
-                onChange={(e) => setSelectedVehicleId(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">Chọn xe</option>
-                {vehicles.map((vehicle) => (
-                  <option key={vehicle.id} value={vehicle.id}>
-                    {vehicle.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Chọn tuyến đường</label>
-              <select
-                value={selectedTripInfoId}
+              <input
+                type="text"
+                value={vehicleText}
                 onChange={(e) => {
-                  setSelectedTripInfoId(e.target.value);
-                  const selectedTrip = tripInfos.find((trip) => trip.id === e.target.value);
-                  if (selectedTrip) {
-                    setSelectedCityId(selectedTrip.departureCity.id);
-                  } else {
-                    setSelectedCityId('');
-                  }
-                  setSelectedPickupAreaId('');
+                  setVehicleText(e.target.value);
+                  setVehicleSearch(e.target.value);
+                  setShowVehicleList(true);
                 }}
+                onFocus={() => setShowVehicleList(true)}
+                onBlur={() => setTimeout(() => setShowVehicleList(false), 200)}
+                placeholder="Tìm kiếm xe..."
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="">Chọn tuyến đường</option>
-                {tripInfos.map((trip) => (
-                  <option key={trip.id} value={trip.id}>
-                    {trip.departureCity.name} - {trip.arrivalCity.name}
-                  </option>
-                ))}
-              </select>
+              />
+              {showVehicleList && filteredVehicles.length > 0 && (
+                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg mt-1 max-h-40 overflow-auto">
+                  {filteredVehicles.map((vehicle) => (
+                    <li
+                      key={vehicle.id}
+                      onMouseDown={() => {
+                        setSelectedVehicleId(vehicle.id);
+                        setVehicleText(vehicle.name);
+                        setShowVehicleList(false);
+                      }}
+                      className="p-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {vehicle.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-            <div className="mb-6">
+            <div className="mb-6 relative">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Chọn tuyến đường</label>
+              <input
+                type="text"
+                value={tripInfoText}
+                onChange={(e) => {
+                  setTripInfoText(e.target.value);
+                  setTripInfoSearch(e.target.value);
+                  setShowTripInfoList(true);
+                }}
+                onFocus={() => setShowTripInfoList(true)}
+                onBlur={() => setTimeout(() => setShowTripInfoList(false), 200)}
+                placeholder="Tìm kiếm tuyến đường..."
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              {showTripInfoList && filteredTripInfos.length > 0 && (
+                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg mt-1 max-h-40 overflow-auto">
+                  {filteredTripInfos.map((trip) => (
+                    <li
+                      key={trip.id}
+                      onMouseDown={() => {
+                        setSelectedTripInfoId(trip.id);
+                        setTripInfoText(`${trip.departureCity.name} - ${trip.arrivalCity.name}`);
+                        setSelectedCityId(trip.departureCity.id);
+                        setSelectedPickupAreaId('');
+                        setPickupAreaText('');
+                        setShowTripInfoList(false);
+                      }}
+                      className="p-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {trip.departureCity.name} - {trip.arrivalCity.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="mb-6 relative">
               <label className="block text-sm font-medium text-gray-700 mb-1">Chọn trạm đón</label>
-              <select
-                value={selectedPickupAreaId}
-                onChange={(e) => setSelectedPickupAreaId(e.target.value)}
+              <input
+                type="text"
+                value={pickupAreaText}
+                onChange={(e) => {
+                  setPickupAreaText(e.target.value);
+                  setPickupAreaSearch(e.target.value);
+                  setShowPickupAreaList(true);
+                }}
+                onFocus={() => setShowPickupAreaList(true)}
+                onBlur={() => setTimeout(() => setShowPickupAreaList(false), 200)}
+                placeholder="Tìm kiếm trạm đón..."
                 disabled={!selectedCityId}
                 className={`w-full p-2 border border-gray-300 rounded-lg focus:outline-none ${
                   selectedCityId ? 'focus:ring-2 focus:ring-blue-500' : 'bg-gray-100 cursor-not-allowed'
                 }`}
-              >
-                <option value="">Chọn trạm đón</option>
-                {filteredPickupAreas.map((area) => (
-                  <option key={area.id} value={area.id}>
-                    {area.city.name} - {area.number}
-                  </option>
-                ))}
-              </select>
+              />
+              {showPickupAreaList && filteredPickupAreas.length > 0 && (
+                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg mt-1 max-h-40 overflow-auto">
+                  {filteredPickupAreas.map((area) => (
+                    <li
+                      key={area.id}
+                      onMouseDown={() => {
+                        setSelectedPickupAreaId(area.id);
+                        setPickupAreaText(`${area.city.name} - ${area.number}`);
+                        setShowPickupAreaList(false);
+                      }}
+                      className="p-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {area.city.name} - {area.number}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-1">Thời gian đi</label>
@@ -390,6 +480,16 @@ const Schedule = () => {
                 placeholder="Số giờ đi"
                 value={travelHours}
                 onChange={(e) => setTravelHours(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Số tiền</label>
+              <input
+                type="number"
+                placeholder="Số tiền"
+                value={seatPrice}
+                onChange={(e) => setSeatPrice(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>

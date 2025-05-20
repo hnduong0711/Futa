@@ -5,12 +5,12 @@ import { Bus, User, UserCircle } from "lucide-react";
 
 const Sidebar = () => {
   const NavList = [
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: <img src={Gbttime} alt="dashboard" className="size-7" />,
-      path: "/admin/dashboard",
-    },
+    // {
+    //   id: 1,
+    //   name: "Dashboard",
+    //   icon: <img src={Gbttime} alt="dashboard" className="size-7" />,
+    //   path: "/admin/dashboard",
+    // },
     {
       id: 2,
       name: "Lịch trình",
@@ -29,12 +29,12 @@ const Sidebar = () => {
       icon: <img src="https://cdn-icons.flaticon.com/svg/2207/2207497.svg?token=exp=1747295750~hmac=2d5deee939fa5e886b2db741a6bec13c" alt="dashboard" className="size-7" />,
       path: "/admin/khoi-hanh",
     },
-    {
-      id: 5,
-      name: "Hóa đơn",
-      icon: <img src={Bill} alt="dashboard" className="size-7" />,
-      path: "/admin/hoa-don",
-    },
+    // {
+    //   id: 5,
+    //   name: "Hóa đơn",
+    //   icon: <img src={Bill} alt="dashboard" className="size-7" />,
+    //   path: "/admin/hoa-don",
+    // },
     {
       id: 6,
       name: "Tuyến đường",

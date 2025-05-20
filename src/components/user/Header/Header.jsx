@@ -20,14 +20,15 @@ const Header = () => {
   // state for download app
   const [openDownApp, setOpenDownApp] = useState(false);
   const downloadRef = useRef(null);
+  const user = JSON.parse(localStorage.getItem("user")) || {};
   // state for navbar
   const [content, setContent] = useState("home");
   // nav menu
   const menuItems = [
     { name: "Trang chủ", path: "/" },
-    { name: "Lịch trình", path: "/lich-trinh" },
+    // { name: "Lịch trình", path: "/lich-trinh" },
     { name: "Tra cứu vé", path: "/tra-cuu-ve" },
-    { name: "Tin tức", path: "/tin-tuc" },
+    // { name: "Tin tức", path: "/tin-tuc" },
     { name: "Hóa đơn", path: "/hoa-don" },
     { name: "Liên hệ", path: "/lien-he" },
     { name: "Về chúng tôi", path: "/ve-chung-toi" },
@@ -151,13 +152,13 @@ const Header = () => {
           </div>
           {/* login */}
           <NavLink
-            to="/dang-nhap"
-            className="bg-slate-200 flex items-center space-x-3 rounded-2xl px-6 py-2 cursor-pointer 
+            to={`${user ? "/profile/thong-tin" : "/login"}`}
+            className="bg-slate-200 flex items-center space-x-2 rounded-2xl px-3 py-2 cursor-pointer 
           hover:bg-slate-100 transition-all duration-300 ease-in-out
           "
           >
             <img src={User} className="size-5" alt="" />
-            <span className="text-[14px] font-semibold">Đăng nhập</span>
+            <span className="text-[14px] font-semibold">{user ? user.fullname : "Đăng nhập"}</span>
           </NavLink>
         </div>
       </div>

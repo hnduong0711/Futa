@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BookingBox from "../components/user/HomePageComponent/BookingBox/BookingBox";
 import PromotionSlider from "../components/user/HomePageComponent/CustomSlider/PromotionSlider";
 import FavouriteRoutes from "../components/user/HomePageComponent/FavouriteRoute/FavouriteRoutes";
@@ -7,15 +7,33 @@ import NewsSlider from "../components/user/HomePageComponent/CustomSlider/NewsSl
 import { CMS1 } from "../assets";
 
 const Homepage = () => {
+  const [form, setForm] = useState({
+    origin: "",
+    destination: "",
+    departureDate: null,
+    returnDate: null,
+    isRoundTrip: false,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [schedules, setSchedules] = useState([]);
 
   return (
     <div className="px-50 py-10 relative">
       <div className="flex flex-col pt-44 space-y-12">
-        <BookingBox />
+        <BookingBox
+          form={form}
+          setForm={setForm}
+          loading={loading}
+          setLoading={setLoading}
+          error={error}
+          setError={setError}
+          setSchedules={setSchedules}
+        />
         <PromotionSlider />
         <FavouriteRoutes />
         <ServiceStats />
-        <NewsSlider />
+        {/* <NewsSlider /> */}
         {/* End of section */}
         <div className="flex flex-col space-y-4">
           <span className="text-futa-heading w-full font-semibold text-3xl uppercase text-center">

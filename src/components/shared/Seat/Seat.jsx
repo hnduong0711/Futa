@@ -14,7 +14,7 @@ const Seat = ({isBooked, isSelected, isVirtual, onClick, seatNumber}) => {
   return (
     <button
       onClick={onClick}
-      className={`rounded-md w-full py-1 font-bold bg-no-repeat bg-center
+      className={`rounded-md text-xs w-full py-3 font-bold bg-no-repeat bg-center
         ${seatStatus(isBooked, isSelected, isVirtual)}
       `}
       disabled={isBooked || isVirtual}

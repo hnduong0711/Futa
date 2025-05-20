@@ -1,12 +1,11 @@
-import React from "react";
-import { Grid, Box, Typography } from "@mui/material";
-import Seat from "./Seat";
+import React, { useState } from "react";
+import Seat from "../Seat/Seat";
 
-const SeatLayout = ({ seatsCount = 36, bookedSeats = [], selectedSeats = [], onSeatClick }) => {
-  // Determine seats per tier (18 for 36 seats, 17 for 34 seats)
-  const seatsPerTier = seatsCount === 36 ? 18 : 17;
+const SeatLayout = ({ bookedSeats = [], selectedSeats = [], onSeatClick, title }) => {
+  // Mặc định 36 ghế, 2 tầng, mỗi tầng 18 ghế (3 cột, 6 hàng)
+  const seatsPerTier = 18;
 
-  // Generate seat numbers for lower (A) and upper (B) tiers
+  // Tạo danh sách ghế cho tầng A và B
   const generateSeatNumbers = (tier, count) => {
     const seats = [];
     for (let i = 1; i <= count; i++) {
@@ -15,51 +14,37 @@ const SeatLayout = ({ seatsCount = 36, bookedSeats = [], selectedSeats = [], onS
     return seats;
   };
 
-  // Seat numbers for each tier
   const lowerTierSeats = generateSeatNumbers("A", seatsPerTier);
   const upperTierSeats = generateSeatNumbers("B", seatsPerTier);
 
-  // Check if a seat is virtual (non-existent, e.g., A00 for 34 seats)
-  const isVirtualSeat = (seatNumber) => {
-    return seatsCount === 34 && seatNumber === "A01";
-  };
-
-  // Render a single tier of seats
+  // Render một tầng ghế
   const renderTier = (tierSeats, tierLabel) => (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold", color: "#f97316" }}>
-        {tierLabel}
-      </Typography>
-      <Grid container spacing={2} columns={3} sx={{ maxWidth: "300px" }}>
-        {Array.from({ length: 6 }).map((_, rowIndex) =>
-          [0, 1, 2].map((colIndex) => {
-            // Calculate seat index (3 columns, 6 rows)
-            const seatIndex = rowIndex * 3 + colIndex;
-            const seatNumber = tierSeats[seatIndex];
-            if (!seatNumber) return null;
-
-            return (
-              <Grid item xs={1} key={seatNumber}>
-                <Seat
-                  isBooked={bookedSeats.includes(seatNumber)}
-                  isSelected={selectedSeats.includes(seatNumber)}
-                  isVirtual={isVirtualSeat(seatNumber)}
-                  onClick={() => onSeatClick(seatNumber)}
-                  seatNumber={seatNumber}
-                />
-              </Grid>
-            );
-          })
-        )}
-      </Grid>
-    </Box>
+    <div className="mb-6 flex flex-col items-center w-full">
+      <h3 className="text-lg font-bold text-futa-primary mb-4">{tierLabel}</h3>
+      <div className="grid grid-cols-3 gap-2 max-w-[240px]">
+        {tierSeats.map((seatNumber, index) => (
+          <div key={seatNumber} className="w-[60px] h-[40px]">
+            <Seat
+              isBooked={bookedSeats.includes(seatNumber)}
+              isSelected={selectedSeats.includes(seatNumber)}
+              isVirtual={false} // Không có ghế ảo vì luôn 36 ghế
+              onClick={() => onSeatClick(seatNumber)}
+              seatNumber={seatNumber}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 
   return (
-    <Box sx={{ p: 4, bgcolor: "#f5f5f5", borderRadius: 2, maxWidth: "600px", mx: "auto" }}>
-      {renderTier(lowerTierSeats, "Lower Tier (A)")}
-      {renderTier(upperTierSeats, "Upper Tier (B)")}
-    </Box>
+    <div className="p-6 rounded-lg max-w-[600px] mx-auto">
+      <h2 className="text-xl font-semibold text-futa-heading mb-4 text-center">{title}</h2>
+      <div className="flex space-x-8">
+        {renderTier(lowerTierSeats, "Tầng dưới (A)")}
+        {renderTier(upperTierSeats, "Tầng trên (B)")}
+      </div>
+    </div>
   );
 };
 
